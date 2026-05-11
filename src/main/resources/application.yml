@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+football:
+  api:
+    base-url: https://api.football-data.org/v4
+    # Paste your free key from football-data.org here
+    api-key: b88de17b1b2b4c22b239d540373bf54f
+
+# Cache TTL settings (seconds)
+cache:
+  matches-ttl: 60        # Live scores refresh every 60s
+  standings-ttl: 300     # Standings refresh every 5 min
+  player-ttl: 3600       # Player stats refresh hourly
+  form-ttl: 300          # Team form refresh every 5 min
+
+# League IDs on football-data.org
+leagues:
+  premier-league: PL
+  la-liga: PD
+  bundesliga: BL1
+  serie-a: SA
+  ligue-1: FL1
+  mls: MLS
+  saudi-pro-league: SPL
+
+spring:
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=60s
+
+logging:
+  level:
+    com.football: DEBUG
